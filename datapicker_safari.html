@@ -4,7 +4,7 @@
         <link rel="stylesheet" href = "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     </head>
     <body>
-        <input type="date" placeholder="mm/dd/yyyy" />
+        <input type="date" placeholder="mm/dd/yyyy" maxlength="20" />
         <p id="demo"></p>   
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -14,7 +14,9 @@
 
             if(ele.type === 'text'){
                 document.getElementById("demo").innerHTML = "date type not supported natively in this browser";
-                $('input[type="date"]').datepicker({ dateformat: 'mm/dd/yyyy', changeMonth: true, changeYear: true});
+                $('input[type="date"]').datepicker({ dateformat: 'mm/dd/yyyy', changeMonth: true, changeYear: true, minDate: "-150Y", maxDate: "0"
+            , yearRange: "-150:+0"}).attr('readonly', true);
+                $('input[type="date"]').css('background-color', '#fff');
             }
             else{
                 document.getElementById("demo").innerHTML = "date type supported natively in this browser";
