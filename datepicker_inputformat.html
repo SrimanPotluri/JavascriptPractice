@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>Form Input Date | JQuery for Safari, IE</title>
+        <link rel="stylesheet" href = "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    </head>
+    <body>
+        <input type="text" placeholder="mm/dd/yyyy" maxlength="10" id="DOB" class="DOB"/>
+        <p id="demo"></p>   
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="text/javascript">
+
+            /* DOB use datepicker */
+            $('#DOB').datepicker({
+                changeYear: true,
+                changeMonth: true,
+                minDate: '-130y',
+                maxDate: '0d',
+                yearRange: '-130:+0'
+            });
+
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth()+1; 
+            var yyyy = today.getFullYear();
+            if(dd<10) 
+            {
+                dd='0'+dd;
+            } 
+            if(mm<10) 
+            {
+                mm='0'+mm;
+            } 
+            
+            var maxDate1 = yyyy+'-'+mm+'-'+dd;
+            var minYear = today.getFullYear() - 130;
+            var minDate1 = minYear+'-'+mm+'-'+dd;
+
+            var cleave = new Cleave('.DOB', {
+                date: true,
+                delimiter: '/',
+                dateMin: minDate1,
+                dateMax: maxDate1,
+                datePattern: ['m', 'd', 'Y']
+            });
+
+        </script>
+        
+    </body>
+   
+</html>
